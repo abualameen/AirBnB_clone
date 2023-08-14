@@ -190,9 +190,24 @@ class HBNBCommand(cmd.Cmd):
         """
         parts = line.split('.')
         if len(parts) > 1 and \
-                parts[0] in HBNBCommand.__prog_classes and \
-                parts[1] == "count()":
-            print(models.storage.count(parts[0]))
+                parts[0] in HBNBCommand.__prog_classes:
+            if parts[1] == "count()":
+                print(models.storage.count(parts[0]))
+                return
+            elif parts[1].startswith("show(") and parts[1].endswith(")"):
+                method_args = parts[1][6:-1]
+                method_args = method_args.strip()
+                class_name = parts[0]
+                obj_id = method_args.strip("\"")  # remove quotes if present
+                self.do_show(f"{class_name} {obj_id}")
+                return
+            elif parts[1].startswith("destroy(") and parts[1].endswith(")"):
+                method_args = parts[1][9:-1]
+                method_args = method_args.strip()  # remove whitespace
+                class_name = parts[0]
+                obj_id = method_args.strip("\"")
+                self.do_destroy(f"{class_name} {obj_id}")
+                return
         else:
             super().default(line)
 
