@@ -211,6 +211,16 @@ class HBNBCommand(cmd.Cmd):
             elif parts[1] == "all()":
                 self.do_all(parts[0])
                 return
+            elif parts[1].startswith("update(") and parts[1].endswith(")"):
+                method_args = parts[1][7:-1]  # extract method arguments excluding "update(" and ")"
+                method_args = method_args.strip()  # remove whitespace
+                class_name = parts[0]
+                args = method_args.split(",")
+                obj_id = args[0].strip().strip("\"")
+                attribute_name = args[1].strip().strip("\"")
+                attribute_value = args[2].strip().strip("\"")
+                self.do_update(f"{class_name} {obj_id} {attribut_name} {attribute_value}")
+                return
         else:
             super().default(line)
 
