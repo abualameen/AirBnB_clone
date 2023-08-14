@@ -219,7 +219,7 @@ class HBNBCommand(cmd.Cmd):
                 obj_id = args[0].strip().strip("\"")
                 attribute_name = args[1].strip().strip("\"")
                 attribute_value = args[2].strip().strip("\"")
-                self.do_update(f"{class_name} {obj_id} {attribut_name} {attribute_value}")
+                self.do_update(f"{class_name} {obj_id} {attribute_name} {attribute_value}")
                 return
         else:
             super().default(line)
