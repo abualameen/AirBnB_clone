@@ -68,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
         this method prints the help message for EOF command (Ctrl+D)
 
         """
-        print("Exi the program on EOF (Ctrl+D)")
+        print("Exit the program on EOF (Ctrl+D)")
 
     def do_create(self, args):
         """
@@ -120,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
         if not args:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__prog_classes:
-            print("** class does'nt exist **")
+            print("** class doesn't exist **")
         elif len(args) < 2:
             print("** instance id missing **")
         else:
@@ -148,7 +148,10 @@ class HBNBCommand(cmd.Cmd):
                     str(obj) for key, obj in all_objs.items()
                     if key.split('.')[0] == args[0]
                 ]
-                print(instance_list)
+                if instance_list:
+                    print(instance_list)
+                else:
+                    print("** no instance found **")
             else:
                 print("** class doesn't exist **")
 
@@ -170,9 +173,9 @@ class HBNBCommand(cmd.Cmd):
             if obj_key not in all_objs:
                 print("** no instance found **")
             elif len(args) < 3:
-                print("*** attribute name missing **")
+                print("** attribute name missing **")
             elif len(args) < 4:
-                print("** value mising **")
+                print("** value missing **")
             else:
                 try:
                     setattr(all_objs[obj_key], args[2], eval(args[3]))
@@ -196,12 +199,12 @@ class HBNBCommand(cmd.Cmd):
                 method_args = parts[1][6:-1]
                 method_args = method_args.strip()
                 class_name = parts[0]
-                obj_id = method_args.strip("\"")  # remove quotes if present
+                obj_id = method_args.strip("\"")
                 self.do_show(f"{class_name} {obj_id}")
                 return
             elif parts[1].startswith("destroy(") and parts[1].endswith(")"):
                 method_args = parts[1][9:-1]
-                method_args = method_args.strip()  # remove whitespace
+                method_args = method_args.strip()
                 class_name = parts[0]
                 obj_id = method_args.strip("\"")
                 self.do_destroy(f"{class_name} {obj_id}")
@@ -210,15 +213,18 @@ class HBNBCommand(cmd.Cmd):
                 self.do_all(parts[0])
                 return
             elif parts[1].startswith("update(") and parts[1].endswith(")"):
-                method_args = parts[1][7:-1]  # extract method arguments excluding "update(" and ")"
+                method_args = parts[1][7:-1]  # extract method argume
                 method_args = method_args.strip()  # remove whitespace
                 class_name = parts[0]
-                args = method_args.split(",", 1)  # Split arguments into ID and dictionary representation
-                if len(args) == 3:  # to see if it's update with attribute name and value
+                args = method_args.split(",", 1)
+                if len(args) == 3:
                     obj_id = args[0].strip().strip("\"")
                     attribute_name = args[1].strip().strip("\"")
                     attribute_value = args[2].strip().strip("\"")
-                    self.do_update(f"{class_name} {obj_id} {attribute_name} {attribute_value}")
+                    self.do_update(
+                        f"{class_name} {obj_id} {attribute_name} \
+                        {attribute_value}"
+                    )
                 else:
                     obj_id = args[0].strip().strip("\"")
                     dictionary_repre = args[1].strip()
