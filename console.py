@@ -94,7 +94,6 @@ class HBNBCommand(cmd.Cmd):
         """
         this method prints str representation of an instance base on
         the class name and id
-        how to use: show <class name> <id>
 
         """
         args = arg.split()
@@ -156,7 +155,6 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """
         this method updates an instance based on the class name and id
-         Usage: update <class name> <id> <attribute name> "<attribute value>"
 
         """
         args = arg.split()
@@ -185,7 +183,7 @@ class HBNBCommand(cmd.Cmd):
     def default(self, line):
         """
         this method handls default behaviors of custom method
-        lisek User.count()
+        useage User.count()
 
         """
         parts = line.split('.')
