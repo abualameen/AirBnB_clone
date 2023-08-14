@@ -208,6 +208,9 @@ class HBNBCommand(cmd.Cmd):
                 obj_id = method_args.strip("\"")
                 self.do_destroy(f"{class_name} {obj_id}")
                 return
+            elif parts[1] == "all()":
+                self.do_all(parts[0])
+                return
         else:
             super().default(line)
 
