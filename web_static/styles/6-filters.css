@@ -1,0 +1,151 @@
+/* styles/6-filters.css */
+
+/* Filter styles */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.locations,
+.amenities {
+    flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.locations ul,
+.amenities ul {
+    position: absolute;
+    display: none;
+    list-style: none;
+    background-color: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    padding: 0;
+    width: 100%;
+    z-index: 1; /* Add a higher z-index to make popover appear above other elements */
+}
+
+.locations:hover ul,
+.amenities:hover ul {
+    display: block;
+    top: 100%;
+    left: 0;
+}
+
+h3 {
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+}
+
+h2 {
+    font-size: 16px;
+    margin: 0;
+    padding: 10px;
+}
+
+
+
+/* Add styles for the search button */
+.search-button {
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* Ensure the button appears above the popover */
+    margin-top: 30px; /* Add margin to separate from the filters */
+}
+
+.search-button:hover {
+    opacity: 0.9;
+}
+
+
+
+
+
+ul li {
+    padding: 10px;
+}
+
+.locations:hover ul,
+.amenities:hover ul {
+    display: block;
+    top: 100%;
+    left: 0;
+}
+
+
+.locations,
+.amenities {
+    flex-basis: 25%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.locations:first-child {
+    border-right: 1px solid #DDDDDD; 
+}
+
+.locations h3,
+.amenities h3 {
+    font-weight: 600;
+    margin: 0;
+    transform: translate(50%) translateX(-100%);
+}
+
+.locations h4,
+.amenities h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0;
+    transform: translate(50%) translateX(-100%);
+}
+
+
+.filters {
+    height: 70px;
+    width: 1000px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    justify-content: space-between;
+    align-items: stretch;
+    display: flex;
+}
+
+
+.search-button {
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    margin: 10px auto;
+    float: right;
+    margin-right: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.search-button:hover {
+    opacity: 0.9;
+}
+
