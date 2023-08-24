@@ -1,0 +1,25 @@
+body {
+    overflow-x: hidden;
+    color: #333;
+    background-color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .search-btn {
+        margin-top: 20px;
+    }
+}
+
+
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    text-align: center;
+}

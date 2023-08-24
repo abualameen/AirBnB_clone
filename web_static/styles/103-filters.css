@@ -1,10 +1,11 @@
-/* styles/6-filters.css */
 
-/* Filter styles */
 .filters {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
+    background-color: #FAFAFA; 
+    color: #333;
+    border: 1px solid #DDDDDD; 
 }
 
 .filters .locations,
